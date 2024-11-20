@@ -1,6 +1,6 @@
 {
   "name": "@cuimingda/create-simple-web",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "main": "index.js",
   "bin": {
     "create-simple-web": "index.js"

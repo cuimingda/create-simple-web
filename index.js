@@ -7,7 +7,11 @@ const fs = require('fs');
 const path = require('path');
 
 const templateDir = path.join(__dirname, './template');
-const targetDir = path.join(process.cwd(), 'app');
+const targetDir = process.cwd();
+
+function isDirectoryEmpty(directory) {
+  return fs.readdirSync(directory).length === 0;
+}
 
 function copyTemplateFiles(templateDir, targetDir) {
   fs.readdirSync(templateDir).forEach(file => {
@@ -24,12 +28,11 @@ function copyTemplateFiles(templateDir, targetDir) {
 }
 
 function init() {
-  if (fs.existsSync(targetDir)) {
-    console.error('Error: app directory already exists.');
+  if (!isDirectoryEmpty(targetDir)) {
+    console.error('Error: target directory is not empty.');
     process.exit(1);
   }
-  fs.mkdirSync(targetDir);
-  console.log('Copying template files to app directory...');
+  console.log('Copying template files to target directory...');
   copyTemplateFiles(templateDir, targetDir);
   console.log('Template files copied successfully.');
 }
