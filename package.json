@@ -1,7 +1,10 @@
 {
   "name": "@cuimingda/create-simple-web",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "main": "index.js",
+  "bin": {
+    "create-simple-web": "src/index.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
